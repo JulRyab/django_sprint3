@@ -2,7 +2,7 @@ import pytest
 from django.db.models import BooleanField, CharField, DateTimeField
 
 from blog.models import Location
-from tests.conftest import _TestModelAttrs
+from blogicum.tests.conftest import _TestModelAttrs
 
 
 @pytest.mark.parametrize(('field', 'type', 'params'), [

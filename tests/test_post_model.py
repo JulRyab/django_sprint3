@@ -4,7 +4,7 @@ from django.db.models import (
 from django.db.utils import IntegrityError
 
 from blog.models import Post
-from tests.conftest import _TestModelAttrs
+from blogicum.tests.conftest import _TestModelAttrs
 
 pytestmark = [
     pytest.mark.django_db,

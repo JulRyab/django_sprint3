@@ -19,6 +19,9 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static_dev'
 ]
 
+MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = '/media/'
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
@@ -28,10 +31,19 @@ SECRET_KEY = 'django-insecure-@43$(veb!i@(^$gfjbr2f0%q9djkg92r1jz_f*o#6=)n-gwntm
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1']
 
+CSRF_FAILURE_VIEW = 'pages.views.csrf_fail'
 
-# Application definition
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+
+EMAIL_FILE_PATH = BASE_DIR / 'sent_emails'
+
+LOGIN_URL = '/auth/login/'
+LOGIN_REDIRECT_URL = '/'
+
 
 INSTALLED_APPS = [
     'pages.apps.PagesConfig',
@@ -42,6 +54,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_bootstrap5',
     'blogicum'
 ]
 
