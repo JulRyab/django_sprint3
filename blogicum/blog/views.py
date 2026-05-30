@@ -1,10 +1,12 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.core.paginator import Paginator
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.utils import timezone
 from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
                                   UpdateView)
+
 
 from blog.forms import CommentForm, PostForm, UserUpdateForm
 from blog.models import Category, Comment, Post
@@ -24,7 +26,8 @@ class PostListView(ListView):
                 .filter(
                     is_published=True,
                     category__is_published=True,
-                    pub_date__lte=timezone.now(),).order_by('-pub_date'))
+                    pub_date__lte=timezone.now())
+                .order_by('-pub_date'))
 
 
 class PostDetailView(DetailView):
@@ -51,7 +54,7 @@ class PostDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['comments'] = self.object.comments.all()
-        context['comment_form'] = CommentForm()
+        context['form'] = CommentForm()
         return context
 
 
@@ -120,19 +123,20 @@ class CommentUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Comment
     form_class = CommentForm
     template_name = 'blog/comment.html'
+    pk_url_kwarg = 'comment_pk'
 
     def test_func(self):
         return self.request.user == self.get_object().author
 
     def get_success_url(self):
-        return reverse_lazy('blog:post_detail', kwargs={
-            'pk': self.object.post.pk
-        })
+        return reverse_lazy('blog:post_detail',
+                            kwargs={'pk': self.object.post.pk})
 
 
 class CommentDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Comment
     template_name = 'blog/comment.html'
+    pk_url_kwarg = 'comment_pk'
 
     def test_func(self):
         return self.request.user == self.get_object().author
@@ -168,7 +172,7 @@ class CategoryPostsView(ListView):
         ).filter(
             is_published=True,
             category=self.category,
-            pub_date__lt=timezone.now()
+            pub_date__lte=timezone.now()
         )
 
     def dispatch(self, request, *args, **kwargs):
@@ -193,8 +197,7 @@ class ProfileView(DetailView):
     context_object_name = 'profile'
 
     def get_object(self, queryset=None):
-        username = self.kwargs.get('username')
-        return get_object_or_404(User, username=username)
+        return get_object_or_404(User, username=self.kwargs['username'])
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -204,8 +207,14 @@ class ProfileView(DetailView):
         else:
             posts = self.object.posts.filter(
                 is_published=True,
-                pub_date__lte=timezone.now()).order_by('-pub_date')
-        context['posts'] = posts
+                pub_date__lte=timezone.now()
+            ).order_by('-pub_date')
+
+        paginator = Paginator(posts, 10)
+        page_number = self.request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+
+        context['page_obj'] = page_obj  # ← теперь совпадает с шаблоном
         return context
 
 
