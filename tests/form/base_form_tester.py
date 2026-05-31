@@ -25,13 +25,13 @@ from django.db.models import Model, QuerySet
 from django.forms import BaseForm
 from django.http import HttpResponse
 
-from blogicum.tests.conftest import (
+from conftest import (
     ItemNotCreatedException,
     restore_cleaned_data,
     TitledUrlRepr,
 )
-from blogicum.tests.fixtures.types import ModelAdapterT
-from blogicum.tests.form.base_tester import BaseTester
+from fixtures.types import ModelAdapterT
+from form.base_tester import BaseTester
 
 
 class FormValidationException(Exception):

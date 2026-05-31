@@ -73,7 +73,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
         })
 
 
-class PostUpdateView(LoginRequiredMixin, UpdateView):
+class PostUpdateView(UserPassesTestMixin, LoginRequiredMixin, UpdateView):
     model = Post
     form_class = PostForm
     template_name = 'blog/create.html'
@@ -96,6 +96,9 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
     def test_func(self):
         return self.request.user == self.get_object().author
+
+    def handle_no_permission(self):
+        return redirect('blog:post_detail', pk=self.kwargs['pk'])
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

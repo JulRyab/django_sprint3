@@ -3,7 +3,7 @@ from typing import List, Sequence, Dict, Optional
 from bs4 import BeautifulSoup
 from bs4.element import Tag, SoupStrainer
 
-from blogicum.tests.conftest import KeyVal
+from conftest import KeyVal
 
 
 def find_links_between_lines(

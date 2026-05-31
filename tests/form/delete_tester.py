@@ -4,14 +4,14 @@ from typing import Set, Tuple, Optional, Union
 from django.db.models import QuerySet, Model
 from django.http import HttpResponse
 
-from blogicum.tests.conftest import TitledUrlRepr
-from blogicum.tests.form.base_form_tester import (
+from conftest import TitledUrlRepr
+from form.base_form_tester import (
     UnauthorizedSubmitTester,
     AnonymousSubmitTester,
     AuthorisedSubmitTester,
     SubmitTester,
 )
-from blogicum.tests.form.base_tester import BaseTester
+from form.base_tester import BaseTester
 
 
 class DeleteTester(BaseTester):

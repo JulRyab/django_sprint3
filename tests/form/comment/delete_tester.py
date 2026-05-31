@@ -1,7 +1,7 @@
 from typing import Union
 
-from blogicum.tests.conftest import TitledUrlRepr
-from blogicum.tests.form.delete_tester import DeleteTester
+from conftest import TitledUrlRepr
+from form.delete_tester import DeleteTester
 
 
 class DeleteCommentTester(DeleteTester):

@@ -10,17 +10,17 @@ from django.db.models import TextField, DateTimeField, ForeignKey, Model
 from django.forms import BaseForm
 from django.utils import timezone
 
-from blogicum.tests.adapters.post import PostModelAdapter
-from blogicum.tests.conftest import _TestModelAttrs, KeyVal, get_a_post_get_response_safely
-from blogicum.tests.fixtures.types import CommentModelAdapterT
-from blogicum.tests.form.base_form_tester import (
+from adapters.post import PostModelAdapter
+from conftest import _TestModelAttrs, KeyVal, get_a_post_get_response_safely
+from fixtures.types import CommentModelAdapterT
+from form.base_form_tester import (
     FormValidationException, AuthorisedSubmitTester)
-from blogicum.tests.form.comment.create_form_tester import CreateCommentFormTester
-from blogicum.tests.form.comment.delete_tester import DeleteCommentTester
-from blogicum.tests.form.comment.edit_form_tester import EditCommentFormTester
-from blogicum.tests.form.comment.find_urls import find_edit_and_delete_urls
-from blogicum.tests.test_content import ProfilePostContentTester, profile_content_tester
-from blogicum.tests.test_edit import _test_edit
+from form.comment.create_form_tester import CreateCommentFormTester
+from form.comment.delete_tester import DeleteCommentTester
+from form.comment.edit_form_tester import EditCommentFormTester
+from form.comment.find_urls import find_edit_and_delete_urls
+from test_content import ProfilePostContentTester, profile_content_tester
+from test_edit import _test_edit
 
 
 @pytest.mark.usefixtures("CommentModel", "CommentModelAdapter")

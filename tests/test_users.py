@@ -11,11 +11,11 @@ from django.db.models import Model
 from django.http import HttpResponse
 from django.urls import URLPattern, URLResolver, get_resolver
 
-from blogicum.tests.adapters.user import UserModelAdapter
-from blogicum.tests.conftest import KeyVal, squash_code
-from blogicum.tests.form.find_urls import find_links_between_lines
-from blogicum.tests.form.user.edit_form_tester import EditUserFormTester
-from blogicum.tests.test_edit import _test_edit
+from adapters.user import UserModelAdapter
+from conftest import KeyVal, squash_code
+from form.find_urls import find_links_between_lines
+from form.user.edit_form_tester import EditUserFormTester
+from test_edit import _test_edit
 
 
 class ManageProfileLinksException(Exception):

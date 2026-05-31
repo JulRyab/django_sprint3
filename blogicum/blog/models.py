@@ -119,10 +119,6 @@ class Comment(models.Model):
         auto_now_add=True,
         verbose_name='Добавлено'
     )
-    updated_at = models.DateTimeField(
-        auto_now=True,
-        verbose_name='Обновлено'
-    )
 
     class Meta:
         verbose_name = 'комментарий'

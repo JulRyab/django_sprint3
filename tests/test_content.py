@@ -10,9 +10,9 @@ from django.http import HttpResponse
 from django.test.client import Client
 from mixer.main import Mixer
 
-from blogicum.tests.adapters.model_adapter import ModelAdapter
-from blogicum.tests.adapters.post import PostModelAdapter
-from blogicum.tests.conftest import (
+from adapters.model_adapter import ModelAdapter
+from adapters.post import PostModelAdapter
+from conftest import (
     N_PER_PAGE,
     UrlRepr,
     _testget_context_item_by_class,

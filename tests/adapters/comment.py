@@ -6,10 +6,10 @@ from django.contrib.auth import get_user_model
 from django.db import models
 from django.db.models import Model
 
-from blogicum.tests.adapters.student_adapter import StudentModelAdapter
+from adapters.student_adapter import StudentModelAdapter
 from blog.models import Post
-from blogicum.tests.conftest import COMMENT_TEXT_DISPLAY_LEN_FOR_TESTS
-from blogicum.tests.fixtures.types import CommentModelAdapterT
+from conftest import COMMENT_TEXT_DISPLAY_LEN_FOR_TESTS
+from fixtures.types import CommentModelAdapterT
 
 
 @pytest.fixture

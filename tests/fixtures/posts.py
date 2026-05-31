@@ -11,7 +11,7 @@ from django.test import Client
 from django.utils import timezone
 from mixer.backend.django import Mixer
 
-from blogicum.tests.conftest import (
+from conftest import (
     N_PER_FIXTURE,
     N_PER_PAGE,
     KeyVal,

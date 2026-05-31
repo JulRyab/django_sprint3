@@ -4,7 +4,7 @@ import pytest
 from django.db.models import Model
 from mixer.backend.django import Mixer
 
-from blogicum.tests.fixtures.types import CommentModelAdapterT
+from fixtures.types import CommentModelAdapterT
 
 
 @pytest.fixture

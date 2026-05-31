@@ -18,7 +18,7 @@ def page_not_found(request, exception):
                   status=HTTPStatus.NOT_FOUND)
 
 
-def csrf_fail(request, reason=''):
+def csrf_fail(request, reason='', exception=None):
     return render(request,
                   'pages/403csrf.html',
                   status=HTTPStatus.FORBIDDEN)

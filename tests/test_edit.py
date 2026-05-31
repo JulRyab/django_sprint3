@@ -6,9 +6,9 @@ from django.db.models import Model
 from django.forms import BaseForm
 from django.http import HttpResponse
 
-from blogicum.tests.fixtures.types import ModelAdapterT
-from blogicum.tests.form.base_form_tester import BaseFormTester
-from blogicum.tests.conftest import (
+from fixtures.types import ModelAdapterT
+from form.base_form_tester import BaseFormTester
+from conftest import (
     KeyVal,
     get_get_response_safely,
     _testget_context_item_by_class,

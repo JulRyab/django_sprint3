@@ -13,23 +13,23 @@ from django.forms import BaseForm
 from django.http import HttpResponse
 from django.utils import timezone
 
-from blogicum.tests.adapters.post import PostModelAdapter
+from adapters.post import PostModelAdapter
 from blog.models import Post
-from blogicum.tests.conftest import (
+from conftest import (
     _TestModelAttrs,
     KeyVal,
     get_create_a_post_get_response_safely, get_get_response_safely,
 )
-from blogicum.tests.fixtures.types import CommentModelAdapterT, ModelAdapterT
-from blogicum.tests.form.base_form_tester import (
+from fixtures.types import CommentModelAdapterT, ModelAdapterT
+from form.base_form_tester import (
     FormValidationException, AuthorisedSubmitTester, SubmitTester)
-from blogicum.tests.form.post.create_form_tester import CreatePostFormTester
-from blogicum.tests.form.post.delete_tester import DeletePostTester
-from blogicum.tests.form.post.edit_form_tester import EditPostFormTester
-from blogicum.tests.form.post.find_urls import find_edit_and_delete_urls
-from blogicum.tests.form.post.form_tester import PostFormTester
-from blogicum.tests.test_content import MainPostContentTester, main_content_tester
-from blogicum.tests.test_edit import _test_edit
+from form.post.create_form_tester import CreatePostFormTester
+from form.post.delete_tester import DeletePostTester
+from form.post.edit_form_tester import EditPostFormTester
+from form.post.find_urls import find_edit_and_delete_urls
+from form.post.form_tester import PostFormTester
+from test_content import MainPostContentTester, main_content_tester
+from test_edit import _test_edit
 
 
 @pytest.mark.parametrize(

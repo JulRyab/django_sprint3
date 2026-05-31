@@ -1,6 +1,6 @@
 from inspect import isclass
 
-from blogicum.tests.adapters.model_adapter import ModelAdapter
+from adapters.model_adapter import ModelAdapter
 
 
 class UserModelAdapter(ModelAdapter):
