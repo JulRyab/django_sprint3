@@ -126,4 +126,4 @@ class Comment(models.Model):
         ordering = ('created_at',)
 
     def __str__(self):
-        return 'Комментарий от {self.author} к {self.post}'
+        return f'Комментарий от {self.author} к {self.post}'
